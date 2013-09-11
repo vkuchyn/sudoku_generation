@@ -1,7 +1,6 @@
 package ua.com.kuchyn.sudoku.web;
 
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.ssl.SslSelectChannelConnector;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 /**
@@ -22,8 +21,10 @@ public class WebLauncher
         launcher.deployApplication(8080);
     }
 
-    public void deployApplication(Integer port) {
-        try {
+    public void deployApplication(Integer port)
+    {
+        try
+        {
 
             server = new Server(port);
 
@@ -36,7 +37,9 @@ public class WebLauncher
             server.setHandler(context);
 
             server.start();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             throw new RuntimeException(e);
         }
     }
