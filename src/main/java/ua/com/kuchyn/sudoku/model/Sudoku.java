@@ -15,7 +15,7 @@ public class Sudoku
     public static final int DEFAULT_FIELD_DIMETION = 9;
     private Integer id;
 
-    private int [][] field;
+    private int[][] field;
 
     public Sudoku()
     {
@@ -24,8 +24,9 @@ public class Sudoku
         initDefaultField();
     }
 
-    private void initDefaultField(){
-        field = new int [DEFAULT_FIELD_DIMETION][DEFAULT_FIELD_DIMETION];
+    private void initDefaultField()
+    {
+        field = new int[DEFAULT_FIELD_DIMETION][DEFAULT_FIELD_DIMETION];
     }
 
     public Integer getId()
@@ -58,7 +59,8 @@ public class Sudoku
         Sudoku sudoku = (Sudoku) o;
         boolean equals = true;
 
-        for (int i = 0; i < DEFAULT_FIELD_DIMETION ; i++){
+        for (int i = 0; i < DEFAULT_FIELD_DIMETION; i++)
+        {
             equals = equals && Arrays.equals(field[i], sudoku.field[i]);
         }
 
@@ -69,11 +71,15 @@ public class Sudoku
     @Override
     public int hashCode()
     {
-        if (field == null) return 0;
+        if (field == null)
+        {
+            return 0;
+        }
         int result = 1;
-        for (int i = 0; i < DEFAULT_FIELD_DIMETION; i++){
-            int [] line = field[i];
-            result = result*31 + (line == null ? 0 : Arrays.hashCode(line));
+        for (int i = 0; i < DEFAULT_FIELD_DIMETION; i++)
+        {
+            int[] line = field[i];
+            result = result * 31 + (line == null ? 0 : Arrays.hashCode(line));
         }
         return result;
     }

@@ -11,7 +11,6 @@ import ua.com.kuchyn.sudoku.service.SudokuService;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -33,7 +32,8 @@ public class SimpleSudokuServiceTest
     private SudokuService sudokuService = new SimpleSudokuService();
 
     @Test
-    public void shouldSaveSudoku(){
+    public void shouldSaveSudoku()
+    {
         //Given
         Sudoku sudoku = new Sudoku();
         when(sudokuDao.save(sudoku)).thenReturn(sudoku);
@@ -47,7 +47,8 @@ public class SimpleSudokuServiceTest
     }
 
     @Test
-    public void shouldGenerateSudoku(){
+    public void shouldGenerateSudoku()
+    {
         //Given
         Sudoku etalonSudoku = generateEtalonSudoku();
 
@@ -63,8 +64,10 @@ public class SimpleSudokuServiceTest
     {
         int size = 9;
         Sudoku sudoku = new Sudoku();
-        for (int i = 0; i < 9; i++){
-            for (int j = 0; j < 9; j++){
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
                 int value = (i + j) % size + 1;
                 sudoku.setValue(i, j, value);
             }
