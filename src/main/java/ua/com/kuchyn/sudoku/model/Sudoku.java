@@ -44,6 +44,10 @@ public class Sudoku
         field[i][j] = value;
     }
 
+    public int [][] getSudokuField(){
+        return field;
+    }
+
     @Override
     public boolean equals(Object o)
     {

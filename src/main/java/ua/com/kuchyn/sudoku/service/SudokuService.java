@@ -14,4 +14,6 @@ public interface SudokuService
     public Sudoku generateSudoku();
 
     public Sudoku saveSudoku(Sudoku sudoku);
+
+    public Sudoku getSudokuById(Integer id);
 }

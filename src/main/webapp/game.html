@@ -1,17 +1,19 @@
 <head>
 
     <link rel="stylesheet" href="http://sudoku.org.ua/c/base.1376812697.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
     <script type="text/javascript">
 
         var cell_size = 40;
-        var mm = new Array(9);
+        var sudokuField = new Array(9);
         var cells = new Array(9);
+        var id;
 
         for(i=0; i<=8; i++) {
-            mm[i] = new Array(9);
+            sudokuField[i] = new Array(9);
             for (j=0; j<=8; j++){
-                mm[i][j] = 0;
+                sudokuField[i][j] = 0;
             }
             cells[i] = new Array(9);
         }
@@ -37,6 +39,14 @@
         }
 
         window.onload = function() {
+
+            id = $.urlParam('id');
+            if (!id){
+                generateSudoku();
+            }
+
+            loadSudoku();
+
             var gameHtml = '<dl class="dl__" id="numz"><dt><a onclick="putnum(-1);"></a></dt><dt><a onclick="putnum(0);">0</a></dt><dt><a onclick="putnum(-1);"></a></dt><dt><a onclick="putnum(1);">1</a></dt><dt><a onclick="putnum(2);">2</a></dt><dt><a onclick="putnum(3);">3</a></dt><dt><a onclick="putnum(4);">4</a></dt><dt><a onclick="putnum(5);">5</a></dt><dt><a onclick="putnum(6);">6</a></dt><dt><a onclick="putnum(7);">7</a></dt><dt><a onclick="putnum(8);">8</a></dt><dt><a onclick="putnum(9);">9</a></dt></dl> <ul class="tab">';
 
             for (i=0; i<=8; i++)
@@ -51,8 +61,10 @@
 
 
             for (var i=0; i<=8; i++)
-            for (var j=0; j<=8; j++)
-            cells[i][j] = document.getElementById('td'+i+j);
+            for (var j=0; j<=8; j++) {
+                cells[i][j] = document.getElementById('td'+i+j);
+                initCell(i,j,sudokuField[i][j]);
+            }
 
             numz = document.getElementById('numz');
 
@@ -60,9 +72,9 @@
 
         function setnum(i,j,m1) {
             if (m1>=0) {
-
-            mm[i][j] = m1;
-            initCell(i,j,mm[i][j]);
+            sendNumber(i,j,m1);
+            sudokuField[i][j] = m1;
+            initCell(i,j,sudokuField[i][j]);
 
             var di = Math.floor(i/3);
             var dj = Math.floor(j/3);
@@ -76,9 +88,49 @@
             cells[i][j].innerHTML = '<span class="n'+m+'">' + (m!=0 ? m : '') + '</span>';
         }
 
-        function validateCell(i, j) {
+        function generateSudoku(){
+            $.ajax({
+                type : 'GET',
+                dataType:"json",
+                async : false,
+                url: "/sudoku-gen/rest/sudoku/generate",
+                success : function(data, textStatus, jqXHR) {
+                    sudoku = eval(data);
+                    window.location.replace('?id='+sudoku.id);
+                }
+            });
         }
 
+        function loadSudoku(id){
+            $.ajax({
+                type : 'GET',
+                dataType:"json",
+                async : false,
+                url: "/sudoku-gen/rest/sudoku/"+id,
+                success : function(data, textStatus, jqXHR) {
+                    sudoku = eval(data);
+                    sudokuField = sudoku.sudokuField;
+                    id=sudoku.id;
+                }
+            });
+        }
+
+        function sendNumber(i,j,number){
+            $.ajax({
+                type:'GET',
+                dataType:'json',
+                async: false,
+                url: "/sudoku-gen/rest/sudoku/" + id + "/addCell/"+i+"/"+j+"/"+number
+            });
+        }
+
+        $.urlParam = function(name){
+            var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+            if (results == null) {
+                return null;
+            } else
+                return results[1] || 0;
+        }
 
     </script>
 

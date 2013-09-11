@@ -38,4 +38,10 @@ public class SimpleSudokuService implements SudokuService
     {
         return sudokuDao.save(sudoku);
     }
+
+    @Override
+    public Sudoku getSudokuById(Integer id)
+    {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }
