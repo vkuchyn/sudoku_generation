@@ -5,7 +5,6 @@ import ua.com.kuchyn.sudoku.model.Sudoku;
 import ua.com.kuchyn.sudoku.service.SudokuService;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,7 +21,16 @@ public class SimpleSudokuService implements SudokuService
     @Override
     public Sudoku generateSudoku()
     {
-        return new Sudoku();
+        Sudoku sudoku = new Sudoku();
+        for (int i = 0; i < Sudoku.DEFAULT_FIELD_DIMETION; i++)
+        {
+            for (int j = 0; j < Sudoku.DEFAULT_FIELD_DIMETION; j++)
+            {
+                int value = (i + j) % Sudoku.DEFAULT_FIELD_DIMETION + 1;
+                sudoku.setValue(i, j, value);
+            }
+        }
+        return sudoku;
     }
 
     @Override

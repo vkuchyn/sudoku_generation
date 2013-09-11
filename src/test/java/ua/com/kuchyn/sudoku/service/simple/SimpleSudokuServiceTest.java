@@ -45,4 +45,33 @@ public class SimpleSudokuServiceTest
         assertThat(actualSudoku, is(sudoku));
         verify(sudokuDao).save(sudoku);
     }
+
+    @Test
+    public void shouldGenerateSudoku(){
+        //Given
+        Sudoku etalonSudoku = generateEtalonSudoku();
+
+        //When
+        Sudoku actualSudoku = sudokuService.generateSudoku();
+
+        //Then
+        assertThat(actualSudoku, is(etalonSudoku));
+        assertThat(actualSudoku.hashCode(), is(etalonSudoku.hashCode()));
+    }
+
+    private Sudoku generateEtalonSudoku()
+    {
+        int size = 9;
+        Sudoku sudoku = new Sudoku();
+        for (int i = 0; i < 9; i++){
+            for (int j = 0; j < 9; j++){
+                int value = (i + j) % size + 1;
+                sudoku.setValue(i, j, value);
+            }
+        }
+
+        return sudoku;
+    }
+
+
 }
