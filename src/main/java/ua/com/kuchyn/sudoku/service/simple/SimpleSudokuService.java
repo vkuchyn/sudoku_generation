@@ -1,6 +1,7 @@
-package ua.com.kuchyn.sudoku.service;
+package ua.com.kuchyn.sudoku.service.simple;
 
 import ua.com.kuchyn.sudoku.model.Sudoku;
+import ua.com.kuchyn.sudoku.service.SudokuService;
 
 import javax.inject.Singleton;
 
@@ -11,9 +12,9 @@ import javax.inject.Singleton;
  * Time: 11:15 PM
  * To change this template use File | Settings | File Templates.
  */
-@Singleton
-public class SudokuService
+public class SimpleSudokuService implements SudokuService
 {
+    @Override
     public Sudoku generateSudoku()
     {
         return new Sudoku();

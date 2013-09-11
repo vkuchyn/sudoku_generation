@@ -6,7 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import ua.com.kuchyn.sudoku.model.Sudoku;
-import ua.com.kuchyn.sudoku.service.SudokuService;
+import ua.com.kuchyn.sudoku.service.simple.SimpleSudokuService;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -25,13 +25,14 @@ public class SudokuControllerTest
 {
 
     @Mock
-    private SudokuService sudokuService;
+    private SimpleSudokuService sudokuService;
 
     @InjectMocks
     private SudokuController sudokuController = new SudokuController();
 
     @Test
-    public void shouldGenerateSudoku(){
+    public void shouldGenerateSudoku()
+    {
         //Given
         Sudoku sudoku = new Sudoku();
         when(sudokuService.generateSudoku()).thenReturn(sudoku);
