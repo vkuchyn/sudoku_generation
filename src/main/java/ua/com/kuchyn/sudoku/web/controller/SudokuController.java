@@ -1,6 +1,7 @@
 package ua.com.kuchyn.sudoku.web.controller;
 
 import ua.com.kuchyn.sudoku.model.Sudoku;
+import ua.com.kuchyn.sudoku.service.SudokuService;
 import ua.com.kuchyn.sudoku.service.simple.SimpleSudokuService;
 
 import javax.inject.Inject;
@@ -21,7 +22,7 @@ public class SudokuController
 {
 
     @Inject
-    private SimpleSudokuService sudokuService;
+    private SudokuService sudokuService;
 
     @GET
     @Path("/generate")

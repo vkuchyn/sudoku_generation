@@ -1,4 +1,4 @@
-package ua.com.kuchyn.sudoku.service;
+package ua.com.kuchyn.sudoku.dao;
 
 import ua.com.kuchyn.sudoku.model.Sudoku;
 
@@ -6,12 +6,10 @@ import ua.com.kuchyn.sudoku.model.Sudoku;
  * Created with IntelliJ IDEA.
  * User: viktor
  * Date: 9/11/13
- * Time: 10:03 AM
+ * Time: 10:12 AM
  * To change this template use File | Settings | File Templates.
  */
-public interface SudokuService
+public interface SudokuDao
 {
-    public Sudoku generateSudoku();
-
-    public Sudoku saveSudoku(Sudoku sudoku);
+    public Sudoku save(Sudoku sudoku);
 }

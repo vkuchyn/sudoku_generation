@@ -1,6 +1,7 @@
 package ua.com.kuchyn.sudoku.application;
 
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
+import ua.com.kuchyn.sudoku.service.SudokuService;
 import ua.com.kuchyn.sudoku.service.simple.SimpleSudokuService;
 
 /**
@@ -15,6 +16,6 @@ public class SudokuBinder extends AbstractBinder
     @Override
     protected void configure()
     {
-        bind(SimpleSudokuService.class).to(SimpleSudokuService.class);
+        bind(SudokuService.class).to(SudokuService.class);
     }
 }
