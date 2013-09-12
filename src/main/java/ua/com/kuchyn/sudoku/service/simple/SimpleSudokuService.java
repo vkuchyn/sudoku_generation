@@ -42,6 +42,6 @@ public class SimpleSudokuService implements SudokuService
     @Override
     public Sudoku getSudokuById(Integer id)
     {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return sudokuDao.getSudokuById(id);
     }
 }

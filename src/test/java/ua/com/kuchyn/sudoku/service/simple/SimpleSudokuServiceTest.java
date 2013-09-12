@@ -60,6 +60,21 @@ public class SimpleSudokuServiceTest
         assertThat(actualSudoku.hashCode(), is(etalonSudoku.hashCode()));
     }
 
+    @Test
+    public void shouldReturnSudokuById(){
+        //Given
+        Sudoku sudoku = new Sudoku();
+        int id = 43;
+        when(sudokuDao.getSudokuById(id)).thenReturn(sudoku);
+
+        //When
+        Sudoku actualSudoku = sudokuService.getSudokuById(id);
+
+        //Then
+        assertThat(actualSudoku, is(sudoku));
+        verify(sudokuDao).getSudokuById(id);
+    }
+
     private Sudoku generateEtalonSudoku()
     {
         int size = 9;

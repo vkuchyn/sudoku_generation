@@ -12,4 +12,6 @@ import ua.com.kuchyn.sudoku.model.Sudoku;
 public interface SudokuDao
 {
     public Sudoku save(Sudoku sudoku);
+
+    Sudoku getSudokuById(int id);
 }
