@@ -45,7 +45,7 @@ public class SudokuController
 
     @GET
     @Path("/{id}")
-    public Sudoku getSudokuById(Integer id)
+    public Sudoku getSudokuById(@PathParam("id") Integer id)
     {
         return sudokuService.getSudokuById(id);
     }

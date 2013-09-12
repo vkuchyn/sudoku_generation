@@ -3,6 +3,7 @@ package ua.com.kuchyn.sudoku.dao.memory;
 import ua.com.kuchyn.sudoku.dao.SudokuDao;
 import ua.com.kuchyn.sudoku.model.Sudoku;
 
+import javax.inject.Singleton;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,10 +14,11 @@ import java.util.Map;
  * Time: 10:13 AM
  * To change this template use File | Settings | File Templates.
  */
+@Singleton
 public class InMemorySudokuDao implements SudokuDao
 {
 
-    private Map<Integer, Sudoku> sudokuMap = new HashMap<Integer, Sudoku>();
+    private static Map<Integer, Sudoku> sudokuMap = new HashMap<Integer, Sudoku>();
     @Override
     public Sudoku save(Sudoku sudoku)
     {

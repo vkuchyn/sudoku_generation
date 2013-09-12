@@ -41,10 +41,10 @@
         window.onload = function() {
 
             id = $.urlParam('id');
-            if (!id){
-                generateSudoku();
+            if (id){
+                loadSudoku(id);
             } else {
-                loadSudoku();
+                generateSudoku();
             }
 
             var gameHtml = '<dl class="dl__" id="numz"><dt><a onclick="putnum(-1);"></a></dt><dt><a onclick="putnum(0);">0</a></dt><dt><a onclick="putnum(-1);"></a></dt><dt><a onclick="putnum(1);">1</a></dt><dt><a onclick="putnum(2);">2</a></dt><dt><a onclick="putnum(3);">3</a></dt><dt><a onclick="putnum(4);">4</a></dt><dt><a onclick="putnum(5);">5</a></dt><dt><a onclick="putnum(6);">6</a></dt><dt><a onclick="putnum(7);">7</a></dt><dt><a onclick="putnum(8);">8</a></dt><dt><a onclick="putnum(9);">9</a></dt></dl> <ul class="tab">';
