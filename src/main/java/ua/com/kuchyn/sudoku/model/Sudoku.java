@@ -93,7 +93,17 @@ public class Sudoku
     {
         return "Sudoku{" +
                 "id=" + id +
-                ", field=" + Arrays.toString(field) +
+                ", field=" + printMatrix(field)+
                 '}';
+    }
+
+    private String printMatrix(int [][] matrix){
+        StringBuilder sb = new StringBuilder();
+        for (int[] aField : field)
+        {
+            sb.append("{").append(Arrays.toString(aField)).append("} ");
+        }
+
+        return sb.toString();
     }
 }

@@ -22,12 +22,18 @@ public class SimpleSudokuService implements SudokuService
     public Sudoku generateSudoku()
     {
         Sudoku sudoku = new Sudoku();
+        int step = 0;
         for (int i = 0; i < Sudoku.DEFAULT_FIELD_DIMETION; i++)
         {
             for (int j = 0; j < Sudoku.DEFAULT_FIELD_DIMETION; j++)
             {
-                int value = (i + j) % Sudoku.DEFAULT_FIELD_DIMETION + 1;
+                int value = (i + j + step) % Sudoku.DEFAULT_FIELD_DIMETION + 1;
                 sudoku.setValue(i, j, value);
+            }
+            if ((i + 1) % 3 == 0 ){
+                step +=3;
+            } else {
+                step +=2;
             }
         }
         return sudoku;
