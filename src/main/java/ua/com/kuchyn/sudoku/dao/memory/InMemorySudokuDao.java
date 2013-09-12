@@ -3,6 +3,9 @@ package ua.com.kuchyn.sudoku.dao.memory;
 import ua.com.kuchyn.sudoku.dao.SudokuDao;
 import ua.com.kuchyn.sudoku.model.Sudoku;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  * User: viktor
@@ -12,16 +15,19 @@ import ua.com.kuchyn.sudoku.model.Sudoku;
  */
 public class InMemorySudokuDao implements SudokuDao
 {
+
+    private Map<Integer, Sudoku> sudokuMap = new HashMap<Integer, Sudoku>();
     @Override
     public Sudoku save(Sudoku sudoku)
     {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        sudokuMap.put(sudoku.getId(), sudoku);
+        return sudoku;
     }
 
     @Override
     public Sudoku getSudokuById(int id)
     {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return sudokuMap.get(id);
     }
 
 }
