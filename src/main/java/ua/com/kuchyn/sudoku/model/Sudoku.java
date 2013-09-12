@@ -87,4 +87,13 @@ public class Sudoku
         }
         return result;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Sudoku{" +
+                "id=" + id +
+                ", field=" + Arrays.toString(field) +
+                '}';
+    }
 }

@@ -39,15 +39,14 @@ public class SudokuController
     {
         Sudoku sudoku = sudokuService.getSudokuById(id);
         sudoku.setValue(i, j, number);
+        sudokuService.saveSudoku(sudoku);
     }
 
     @GET
     @Path("/{id}")
     public Sudoku getSudokuById(Integer id)
     {
-        Sudoku sudoku = sudokuService.generateSudoku();
-        sudoku.setId(id);
-        return sudoku;
+        return new Sudoku();
     }
 
 }
