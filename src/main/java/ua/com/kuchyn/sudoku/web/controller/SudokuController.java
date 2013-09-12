@@ -46,7 +46,7 @@ public class SudokuController
     @Path("/{id}")
     public Sudoku getSudokuById(Integer id)
     {
-        return new Sudoku();
+        return sudokuService.getSudokuById(id);
     }
 
 }
