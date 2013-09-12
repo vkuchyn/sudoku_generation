@@ -34,18 +34,20 @@ public class SudokuControllerTest
     private SudokuController sudokuController = new SudokuController();
 
     @Test
-    public void shouldGenerateSudoku()
+    public void shouldGenerateAndSaveSudoku()
     {
         //Given
         Sudoku sudoku = new Sudoku();
         sudoku.setId(24);
         when(sudokuService.generateSudoku()).thenReturn(sudoku);
+        when(sudokuService.saveSudoku(sudoku)).thenReturn(sudoku);
 
         //When
         Sudoku actualSudoku = sudokuController.generateSudoku();
 
         //Then
         verify(sudokuService).generateSudoku();
+        verify(sudokuService).saveSudoku(sudoku);
         assertThat(actualSudoku, is(sudoku));
     }
 

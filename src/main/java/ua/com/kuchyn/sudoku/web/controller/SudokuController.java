@@ -29,7 +29,8 @@ public class SudokuController
     @Produces(MediaType.APPLICATION_JSON)
     public Sudoku generateSudoku()
     {
-        return sudokuService.generateSudoku();
+        Sudoku sudoku = sudokuService.generateSudoku();
+        return sudokuService.saveSudoku(sudoku);
     }
 
     @GET
