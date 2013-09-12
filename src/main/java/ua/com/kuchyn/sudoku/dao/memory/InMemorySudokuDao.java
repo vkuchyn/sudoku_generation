@@ -14,11 +14,10 @@ import java.util.Map;
  * Time: 10:13 AM
  * To change this template use File | Settings | File Templates.
  */
-@Singleton
 public class InMemorySudokuDao implements SudokuDao
 {
 
-    private static Map<Integer, Sudoku> sudokuMap = new HashMap<Integer, Sudoku>();
+    private Map<Integer, Sudoku> sudokuMap = new HashMap<Integer, Sudoku>();
     @Override
     public Sudoku save(Sudoku sudoku)
     {

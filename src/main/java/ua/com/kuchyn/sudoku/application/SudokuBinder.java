@@ -6,6 +6,8 @@ import ua.com.kuchyn.sudoku.dao.memory.InMemorySudokuDao;
 import ua.com.kuchyn.sudoku.service.SudokuService;
 import ua.com.kuchyn.sudoku.service.simple.SimpleSudokuService;
 
+import javax.inject.Singleton;
+
 /**
  * Created with IntelliJ IDEA.
  * User: viktor
@@ -18,7 +20,7 @@ public class SudokuBinder extends AbstractBinder
     @Override
     protected void configure()
     {
-        bind(SimpleSudokuService.class).to(SudokuService.class);
-        bind(InMemorySudokuDao.class).to(SudokuDao.class);
+        bind(SimpleSudokuService.class).to(SudokuService.class).in(Singleton.class);
+        bind(InMemorySudokuDao.class).to(SudokuDao.class).in(Singleton.class);
     }
 }
