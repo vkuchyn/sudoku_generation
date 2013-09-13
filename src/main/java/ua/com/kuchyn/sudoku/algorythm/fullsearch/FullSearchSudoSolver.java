@@ -92,7 +92,6 @@ public class FullSearchSudoSolver implements SudokuSolver
             i = 0;
             if (++j == mBoardSize)
             {
-                print(board);
                 return true;
             }
         }

@@ -69,7 +69,6 @@ public class SimpleSudokuServiceTest
 
         //When
         Sudoku actualSudoku = sudokuService.generateSudoku();
-        System.out.println(actualSudoku);
 
         //Then
         assertThat(actualSudoku, is(etalonSudoku));

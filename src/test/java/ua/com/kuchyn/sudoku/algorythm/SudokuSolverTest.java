@@ -1,6 +1,7 @@
 package ua.com.kuchyn.sudoku.algorythm;
 
 import org.junit.Test;
+import ua.com.kuchyn.sudoku.algorythm.fullsearch.SudokuSolverFactory;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -40,7 +41,7 @@ public class SudokuSolverTest
     public void shouldFindOnlyOneDecision()
     {
         //Given
-        SudokuSolver sudokuSolver = new SudokuSolver(SINGLE_SOLUTION_GRID);
+        SudokuSolver sudokuSolver = SudokuSolverFactory.generateSudokuSolver(SINGLE_SOLUTION_GRID);
 
         //When
         boolean solved = sudokuSolver.checkOnlyOneDecisionExists();
@@ -52,7 +53,7 @@ public class SudokuSolverTest
     @Test
     public void shouldNotSolveSudokuWhenMoreThanOneDesision(){
         //Given
-        SudokuSolver sudokuSolver = new SudokuSolver(MULTIPLY_SOLUTION_GRID);
+        SudokuSolver sudokuSolver = SudokuSolverFactory.generateSudokuSolver(MULTIPLY_SOLUTION_GRID);
 
         //When
         boolean solved = sudokuSolver.checkOnlyOneDecisionExists();
