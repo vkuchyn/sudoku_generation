@@ -12,9 +12,25 @@ import ua.com.kuchyn.sudoku.service.SudokuService;
  */
 public class ShuffleSudokuService implements SudokuService
 {
+
+
+    public static final int QUADRANT_SIZE = 3;
+    public static final int DIMENTION = (int) Math.pow(QUADRANT_SIZE, 2);
+
     @Override
     public Sudoku generateInitialState()
     {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        Sudoku sudoku = new Sudoku();
+        for (int i = 0; i < DIMENTION; i++)
+        {
+            for (int j = 0; j < DIMENTION; j++)
+            {
+                sudoku.setValue(i, j, (j + i * QUADRANT_SIZE + i / QUADRANT_SIZE)
+                        % DIMENTION + 1);
+
+            }
+        }
+
+        return sudoku;
     }
 }
