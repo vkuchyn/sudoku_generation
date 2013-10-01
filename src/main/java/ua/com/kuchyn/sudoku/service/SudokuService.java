@@ -12,4 +12,6 @@ import ua.com.kuchyn.sudoku.algorythm.ua.com.kuchyn.model.Sudoku;
 public interface SudokuService
 {
     Sudoku generateInitialState();
+
+    Sudoku shuffleRows(Sudoku initialSudoku);
 }

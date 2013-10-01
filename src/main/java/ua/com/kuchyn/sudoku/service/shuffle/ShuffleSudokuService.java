@@ -1,7 +1,10 @@
 package ua.com.kuchyn.sudoku.service.shuffle;
 
+import com.sun.deploy.util.ArrayUtil;
 import ua.com.kuchyn.sudoku.algorythm.ua.com.kuchyn.model.Sudoku;
 import ua.com.kuchyn.sudoku.service.SudokuService;
+
+import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,5 +35,13 @@ public class ShuffleSudokuService implements SudokuService
         }
 
         return sudoku;
+    }
+
+    @Override
+    public Sudoku shuffleRows(Sudoku initialSudoku)
+    {
+
+
+        return initialSudoku;
     }
 }

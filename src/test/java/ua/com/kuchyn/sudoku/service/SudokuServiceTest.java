@@ -69,7 +69,7 @@ public class SudokuServiceTest
 
     private boolean assertRowIsPresent(Sudoku actualSudoku, int row)
     {
-        int cellSection = row / 3;
+        int cellSection = (row / 3) * 3;
         return assertRowsEquals(actualSudoku, cellSection, row) ||
                 assertRowsEquals(actualSudoku, cellSection + 1, row) ||
                 assertRowsEquals(actualSudoku, cellSection + 2, row);
