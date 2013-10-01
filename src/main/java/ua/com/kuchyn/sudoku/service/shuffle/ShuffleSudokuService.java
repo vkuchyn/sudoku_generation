@@ -40,7 +40,10 @@ public class ShuffleSudokuService implements SudokuService
     @Override
     public Sudoku shuffleRows(Sudoku initialSudoku)
     {
-
+        int [][] field = initialSudoku.getSudokuField();
+        int [] row = field[0];
+        field[0] = field[1];
+        field[1] = row;
 
         return initialSudoku;
     }

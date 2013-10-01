@@ -1,7 +1,12 @@
 package ua.com.kuchyn.sudoku.algorythm.ua.com.kuchyn.model;
 
+import com.sun.rowset.internal.Row;
+
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+
+import static java.util.Arrays.asList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -105,5 +110,38 @@ public class Sudoku
         }
 
         return sb.toString();
+    }
+
+    public List<FieldRow> getSection(int section)
+    {
+        int offset = section * 3;
+        return asList(getRow(offset), getRow(offset + 1), getRow(offset + 2));
+    }
+
+    public FieldRow getRow(int index)
+    {
+        return new FieldRow(field[index]);
+    }
+
+    public static class FieldRow
+    {
+        private int[] row;
+
+        public FieldRow(int[] row)
+        {
+            this.row = row;
+        }
+
+        @Override
+        public boolean equals(Object obj)
+        {
+            return obj instanceof FieldRow && Arrays.equals(((FieldRow) (obj)).row, row);
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return Arrays.hashCode(row);
+        }
     }
 }

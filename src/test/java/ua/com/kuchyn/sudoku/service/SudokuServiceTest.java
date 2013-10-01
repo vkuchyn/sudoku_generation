@@ -5,10 +5,14 @@ import ua.com.kuchyn.sudoku.algorythm.ua.com.kuchyn.model.Sudoku;
 import ua.com.kuchyn.sudoku.service.shuffle.ShuffleSudokuService;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -60,24 +64,23 @@ public class SudokuServiceTest
 
         //Then
         assertThat(actualSudoku.getSudokuField(), is(not(SUDOKU_INITIAL_STATE)));
-
-        for (int i = 0; i < 9; i++)
+        for (int section = 0; section < 3; section++)
         {
-            assertThat(assertRowIsPresent(actualSudoku, i), is(true));
+            assertSectionIsShuffled(actualSudoku, section);
         }
     }
 
-    private boolean assertRowIsPresent(Sudoku actualSudoku, int row)
+    private void assertSectionIsShuffled(Sudoku sudoku, int section)
     {
-        int cellSection = (row / 3) * 3;
-        return assertRowsEquals(actualSudoku, cellSection, row) ||
-                assertRowsEquals(actualSudoku, cellSection + 1, row) ||
-                assertRowsEquals(actualSudoku, cellSection + 2, row);
+        List<Sudoku.FieldRow> sectionRows = sudoku.getSection(section);
+        for (int row = 0; row < 3; row++)
+        {
+            assertTrue(sectionRows.contains(getInitialRow(section * 3 + row)));
+        }
     }
 
-    private boolean assertRowsEquals(Sudoku actualSudoku, int cellSection, int row)
+    private Sudoku.FieldRow getInitialRow(int row)
     {
-        return Arrays.equals(actualSudoku.getSudokuField()[cellSection], SUDOKU_INITIAL_STATE[row]);
+        return new Sudoku.FieldRow(SUDOKU_INITIAL_STATE[row]);
     }
-
 }
